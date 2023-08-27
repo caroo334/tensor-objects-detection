@@ -19,6 +19,8 @@ function RootPage() {
     const [singleImage, setSingleImage] = useState(false)
     const [liveWebcam, setLiveWebcam] = useState(false)
 
+    console.log(`/model/${modelName.name}/${modelName.child[1]}/model.json`)
+
     useEffect(() => {
         tf.loadGraphModel(`/model/${modelName.name}/${modelName.child[1]}/model.json`, {
             onProgress: (fractions) => {

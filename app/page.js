@@ -22,7 +22,7 @@ function RootPage() {
     const [liveWebcam, setLiveWebcam] = useState(false)
 
     useEffect(() => {
-        tf.loadGraphModel(`/model/${modelName.name}/${modelName.child[1]}/model.json`, {
+        tf.loadGraphModel(`model/${modelName.name}/${modelName.child[1]}/model.json`, {
             onProgress: (fractions) => {
                 setLoading(fractions)
             }
@@ -157,9 +157,12 @@ function RootPage() {
                     </div>
                 )}
                 <div>
-                    <button className='primay-button' onClick={webcamHandler}>
-                        {liveWebcam ? 'Stop Webcam' : 'Start Webcam'}
-                    </button>
+                    {model ?
+                        <button className='primay-button' onClick={webcamHandler}>
+                            {liveWebcam ? 'Stop Webcam' : 'Start Webcam'}
+                        </button> : 'Modelo Cargando...'
+                    }
+
                 </div>
             </div>
         </>
